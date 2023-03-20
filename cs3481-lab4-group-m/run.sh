@@ -1,20 +1,48 @@
 #!/bin/bash
 
-./lab4 > student.output
-diff instructor.output student.output > diffs
+rm -f -r Outputs
+mkdir Outputs
+dir="/u/css/classes/3481/203/lab5/Tests"
+tests=( asumr error1 error2 error3 error4 error5 error6
+        error7 error8 error9 error10 error11 error12 
+        error13 error14 error15 error16)
 
-if [ -s diffs ]; then
-   echo ' '
-   echo 'Some tests did not pass.'
-   echo 'It should produce identical output to the file instructor.output.'
-   echo 'To see your output, run: lab5'
-   echo 'To see the diffs, run: diff instructor.output student.output'
-   echo 'The lines from the instructor.output file begin with <'
-   echo 'The lines from the student.output file begin with >'
-   echo 'If there are no lines that begin with > then your program produced no output.'
-   echo ' '
+numTests=0
+numPasses=0
+
+for atest in ${tests[@]}
+do
+   infile="$dir/$atest.yo"
+   studoutfile="$atest.sdump"
+   instoutfile="$dir/$atest.idump"
+   rm -f $studoutfile
+   ./lab5 $infile > $studoutfile
+   rm -f diffs
+   diff -b $instoutfile $studoutfile > diffs
+   if [ -s diffs ]; then
+      cp $instoutfile Outputs/
+      cp $infile Outputs/
+      mv $studoutfile Outputs/
+      echo "Testing $infile ... failed"
+      cat diffs
+      rm -f diffs
+   else
+      rm -f diffs
+      rm -f $studoutfile
+      echo "Testing $infile ... passed"
+      numPasses=$(($numPasses+1))
+   fi
+   numTests=$(($numTests+1))
+done
+echo " "
+echo "$numPasses passed out of $numTests tests."
+
+if [ $numPasses -ne $numTests ]; then
+   echo "Files saved in your Outputs directory."
+   echo "Input files end with a .yo."
+   echo "Your output files end with a .sdump."
+   echo "Correct output files end with a .idump."
 else
-   echo ' '
-   echo 'All tests passed.'
-fi
-rm diffs
+   rm -f -r Outputs
+fi 
+

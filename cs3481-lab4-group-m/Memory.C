@@ -1,3 +1,19 @@
+/**
+ * Lab Assignement 4
+ *
+ * Title:           Memory
+ * Files:           Memory.C
+ * Semester:        Spring 2023
+ * Course:          CS_3481
+ * Professor:       Dr. Hamza
+ * 
+ * @author:         Bryan Trejo,
+ *                  Collin Streitman
+ * 
+ * Group Name:      Group M
+ * @version:        2/22/2023
+ */
+
 #include <iostream>
 #include <iomanip>
 #include "Memory.h"
