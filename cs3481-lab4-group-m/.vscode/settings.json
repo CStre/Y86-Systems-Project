@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "FetchStage.C": "cpp",
+        "PipeRegField.C": "cpp",
+        "DecodeStage.C": "cpp",
+        "ExecuteStage.C": "cpp",
+        "D.C": "cpp",
+        "E.C": "cpp",
+        "Tools.C": "cpp",
+        "ConditionCodes.C": "cpp",
+        "F.C": "cpp",
+        "RegisterFile.C": "cpp",
+        "WritebackStage.C": "cpp",
+        "MemoryStage.C": "cpp",
+        "Simulate.C": "cpp",
+        "W.C": "cpp",
+        "M.C": "cpp",
+        "Memory.C": "cpp"
+    }
+}
